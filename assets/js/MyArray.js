@@ -37,10 +37,10 @@ function MyArrayPrototype() {
     return tmp;
   };
 
-  this.unshift = function (value) {
+  this.unshift = function (...value) {
     const tmp = new MyArray();
-    tmp.push(value);
-    this.length++;
+    tmp.push(...value);
+    this.length += value.length;
     for (let i = 0; i < this.length - 1; i++) {
       tmp.push(this[i]);
     }
