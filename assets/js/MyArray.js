@@ -17,7 +17,7 @@ function MyArrayPrototype() {
   };
 
   this.pop = function () {
-    let tmp = this[--this.length];
+    const tmp = this[--this.length];
     delete this[this.length];
     return tmp;
   };
@@ -51,7 +51,7 @@ function MyArrayPrototype() {
   };
 
   this.shift = function () {
-    let first = this[0];
+    const first = this[0];
     const tmp = new MyArray();
     for(let i = 1; i < this.length; i++) {
       tmp.push(this[i]);
