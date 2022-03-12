@@ -52,9 +52,13 @@ function MyArrayPrototype() {
 
   this.shift = function () {
     let first = this[0];
-    let last = this[this.length - 1];
-    this[0] = last;
-    this[this.length - 1] = first;
+    const tmp = new MyArray();
+    for(let i = 1; i < this.length; i++) {
+      tmp.push(this[i]);
+    }
+    for(let i = 0; i < this.length - 1; i++) {
+      this[i] = tmp[i];
+    }
     this.pop();
     return first;
   };
