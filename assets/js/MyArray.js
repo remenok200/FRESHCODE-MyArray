@@ -6,7 +6,7 @@ function MyArray() {
 
 function MyArrayPrototype() {
   MyArray.isMyArray = function (arg) {
-    return console.log(arg instanceof MyArray);
+    return arg instanceof MyArray ? true : false;
   };
 
   this.push = function (...values) {
