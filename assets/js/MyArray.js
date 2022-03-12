@@ -17,6 +17,9 @@ function MyArrayPrototype() {
   };
 
   this.pop = function () {
+    if(this.length === 0) {
+      throw new RangeError("Array is empty!");
+    }
     const tmp = this[--this.length];
     delete this[this.length];
     return tmp;
@@ -51,6 +54,9 @@ function MyArrayPrototype() {
   };
 
   this.shift = function () {
+    if(this.length === 0) {
+      throw new RangeError("Array is empty!");
+    }
     const first = this[0];
     const tmp = new MyArray();
     for(let i = 1; i < this.length; i++) {
