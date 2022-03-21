@@ -17,12 +17,11 @@ function MyArrayPrototype() {
   };
 
   this.pop = function () {
-    if(this.length === 0) {
-      throw new RangeError("Array is empty!");
+    if(this.length > 0) {
+      const tmp = this[--this.length];
+      delete this[this.length];
+      return tmp;
     }
-    const tmp = this[--this.length];
-    delete this[this.length];
-    return tmp;
   };
 
   this.forEach = function (callback) {
@@ -53,19 +52,18 @@ function MyArrayPrototype() {
   };
 
   this.shift = function () {
-    if(this.length === 0) {
-      throw new RangeError("Array is empty!");
+    if(this.length > 0) {
+      const first = this[0];
+      const tmp = new MyArray();
+      for(let i = 1; i < this.length; i++) {
+        tmp.push(this[i]);
+      }
+      for(let i = 0; i < this.length - 1; i++) {
+        this[i] = tmp[i];
+      }
+      this.pop();
+      return first;
     }
-    const first = this[0];
-    const tmp = new MyArray();
-    for(let i = 1; i < this.length; i++) {
-      tmp.push(this[i]);
-    }
-    for(let i = 0; i < this.length - 1; i++) {
-      this[i] = tmp[i];
-    }
-    this.pop();
-    return first;
   };
 
   this.reverse = function () {
