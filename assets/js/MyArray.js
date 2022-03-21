@@ -6,7 +6,7 @@ function MyArray() {
 
 function MyArrayPrototype() {
   MyArray.isMyArray = function (arg) {
-    return arg instanceof MyArray ? true : false;
+    return arg instanceof MyArray;
   };
 
   this.push = function (...values) {
@@ -34,8 +34,7 @@ function MyArrayPrototype() {
   this.map = function (callback) {
     const tmp = new MyArray();
     for (let i = 0; i < this.length; i++) {
-      tmp.push(this[i]);
-      callback(tmp[i], i, tmp);
+      tmp.push(callback(this[i], i, this));
     }
     return tmp;
   };
